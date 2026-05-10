@@ -53,8 +53,8 @@ body { font-family: 'Baloo 2', sans-serif; background: #E8F0FF; min-height: 100v
 .cal-day.today { background: linear-gradient(135deg, #EFF6FF, #DBEAFE); }
 .cal-day.today .day-num { color: #1D4ED8; font-weight: 800; }
 .day-num { font-size: 14px; color: #374151; font-weight: 500; }
-.day-events { display: flex; flex-direction: column; gap: 2px; margin-top: 3px; overflow: hidden; max-height: 44px; }
-.day-event-dot { font-size: 9px; padding: 1px 4px; border-radius: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; font-weight: 700; flex-shrink: 0; }
+.day-events { display: flex; flex-direction: row; flex-wrap: wrap; gap: 3px; margin-top: 5px; overflow: hidden; max-height: 44px; }
+.day-event-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
 .events-list { margin-top: 1rem; }
 .events-list-title { font-size: 13px; font-weight: 700; color: #93C5FD; margin-bottom: 9px; text-transform: uppercase; letter-spacing: 0.8px; }
 .event-item { background: white; border-radius: 14px; border: 1px solid #E0EAFF; padding: 12px 14px; margin-bottom: 7px; display: flex; align-items: center; gap: 10px; box-shadow: 0 1px 4px rgba(37,99,235,0.06); }
