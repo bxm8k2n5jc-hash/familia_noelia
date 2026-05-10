@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Familiar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app wrapper">
+    <div class="header">
+      <div class="header-left">
+        <div class="logo">🏠</div>
+        <div>
+          <div class="app-title">Casa Familiar</div>
+          <div class="app-subtitle">Organización familiar</div>
+        </div>
+      </div>
+      <span class="admin-badge">👑 Noelia · Admin</span>
+    </div>
+    <div class="members-legend" id="members-legend"></div>
+    <nav class="nav">
+      <button class="nav-btn active" onclick="showSection('calendario',this)">📅 Calendario</button>
+      <button class="nav-btn" onclick="showSection('tareas',this)">✅ Tareas</button>
+      <button class="nav-btn" onclick="showSection('recordatorios',this)">🔔 Recordatorios</button>
+      <button class="nav-btn" onclick="showSection('compra',this)">🛒 Compra</button>
+      <button class="nav-btn" onclick="showSection('menu',this)">🍽️ Menú</button>
+      <button class="nav-btn" onclick="showSection('notas',this)">📝 Notas</button>
+      <button class="nav-btn" onclick="showSection('medicamentos',this)">💊 Medicamentos</button>
+      <button class="nav-btn" onclick="showSection('documentos',this)">📁 Documentos</button>
+    </nav>
+    <div class="content">
+
+      <div class="section active" id="sec-calendario">
+        <div class="cal-header">
+          <div class="cal-title" id="cal-month-title"></div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <div class="cal-nav">
+              <button onclick="changeMonth(-1)">‹</button>
+              <button onclick="changeMonth(1)">›</button>
+            </div>
+            <button class="add-btn" onclick="showModal('evento')">+ Añadir</button>
+          </div>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+        <div class="events-list">
+          <div class="events-list-title">📌 Próximos eventos</div>
+          <div id="events-container"></div>
+        </div>
+      </div>
+
+      <div class="section" id="sec-tareas">
+        <div class="sec-header">
+          <div class="tasks-filter">
+            <button class="filter-pill active" onclick="filterTasks('todas',this)">Todas</button>
+            <button class="filter-pill" onclick="filterTasks('pendientes',this)">Pendientes</button>
+            <button class="filter-pill" onclick="filterTasks('hechas',this)">Hechas ✓</button>
+          </div>
+          <button class="add-btn" onclick="showModal('tarea')">+ Añadir</button>
+        </div>
+        <div id="tasks-container"></div>
+      </div>
+
+      <div class="section" id="sec-recordatorios">
+        <div class="sec-header">
+          <span class="sec-title">🔔 Recordatorios activos</span>
+          <button class="add-btn" onclick="showModal('recordatorio')">+ Añadir</button>
+        </div>
+        <div class="reminders-grid" id="reminders-container"></div>
+      </div>
+
+      <div class="section" id="sec-compra">
+        <div class="sec-header">
+          <div class="compra-cats">
+            <button class="cat-pill active" onclick="filterCompra('todas',this)">Todas</button>
+            <button class="cat-pill" onclick="filterCompra('frutas',this)">🍎 Frutas</button>
+            <button class="cat-pill" onclick="filterCompra('lácteos',this)">🥛 Lácteos</button>
+            <button class="cat-pill" onclick="filterCompra('limpieza',this)">🧹 Limpieza</button>
+            <button class="cat-pill" onclick="filterCompra('otros',this)">📦 Otros</button>
+          </div>
+          <button class="add-btn" onclick="showModal('compra')">+ Añadir</button>
+        </div>
+        <div class="compra-stats">
+          <span id="compra-stats-txt"></span>
+          <span id="compra-limpiar" onclick="limpiarCompra()">🗑️ Limpiar</span>
+        </div>
+        <div class="compra-progress"><div class="compra-progress-bar" id="compra-bar"></div></div>
+        <div id="compra-container"></div>
+      </div>
+
+      <div class="section" id="sec-menu">
+        <div class="sec-header">
+          <span class="sec-title">🍽️ Semana del 11 al 17 de mayo</span>
+        </div>
+        <div class="menu-grid" id="menu-grid"></div>
+        <div class="menu-hint">✏️ Pulsa una casilla para editarla</div>
+      </div>
+
+      <div class="section" id="sec-notas">
+        <div class="sec-header">
+          <span class="sec-title">📝 Notas compartidas</span>
+          <button class="add-btn" onclick="showModal('nota')">+ Nueva nota</button>
+        </div>
+        <div class="notes-grid" id="notes-container"></div>
+      </div>
+
+      <div class="section" id="sec-medicamentos">
+        <div class="sec-header">
+          <span class="sec-title">💊 Medicamentos activos</span>
+          <button class="add-btn" onclick="showModal('medicamento')">+ Añadir</button>
+        </div>
+        <div class="med-grid" id="med-container"></div>
+      </div>
+
+      <div class="section" id="sec-documentos">
+        <div class="sec-header">
+          <span class="sec-title">📁 Archivos compartidos</span>
+          <button class="add-btn" onclick="showModal('documento')">+ Añadir</button>
+        </div>
+        <div class="docs-grid" id="docs-container"></div>
+      </div>
+
+    </div>
+
+    <div class="modal-bg" id="modal" onclick="if(event.target===this)closeModal()">
+      <div class="modal">
+        <div class="modal-title">
+          <span id="modal-title"></span>
+          <button class="icon-btn" onclick="closeModal()">✕</button>
+        </div>
+        <div id="modal-body"></div>
+        <div class="modal-actions">
+          <button class="btn-sec" onclick="closeModal()">Cancelar</button>
+          <button class="add-btn" onclick="saveModal()">✓ Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
