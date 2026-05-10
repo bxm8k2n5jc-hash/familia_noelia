@@ -109,7 +109,7 @@ body { font-family: 'Baloo 2', sans-serif; background: #E8F0FF; min-height: 100v
 .compra-stats { font-size: 14px; color: #93C5FD; margin-bottom: .5rem; display: flex; justify-content: space-between; }
 #compra-limpiar { cursor: pointer; color: #2563EB; display: none; font-weight: 600; }
 
-/* MENÃš */
+/* MENÚ */
 .menu-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
 .menu-day-col { display: flex; flex-direction: column; gap: 4px; }
 .menu-day-name { font-size: 12px; font-weight: 700; color: #3B82F6; text-align: center; padding: 5px 2px; background: white; border-radius: 10px; border: 1px solid #DBEAFE; }
