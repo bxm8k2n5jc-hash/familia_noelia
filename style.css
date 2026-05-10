@@ -2,8 +2,9 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Baloo 2', sans-serif; background: #E8F0FF; min-height: 100vh; }
+body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('IMG_288D1220A9FD-1.jpeg') center center / cover no-repeat; opacity: 0.15; z-index: 0; pointer-events: none; }
 
-.app { max-width: 900px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; background: white; box-shadow: 0 0 40px rgba(37,99,235,0.1); }
+.app { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; background: rgba(255,255,255,0.85); box-shadow: 0 0 40px rgba(37,99,235,0.1); }
 
 /* HEADER */
 .header { background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%); padding: .9rem 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
@@ -109,7 +110,7 @@ body { font-family: 'Baloo 2', sans-serif; background: #E8F0FF; min-height: 100v
 .compra-stats { font-size: 14px; color: #93C5FD; margin-bottom: .5rem; display: flex; justify-content: space-between; }
 #compra-limpiar { cursor: pointer; color: #2563EB; display: none; font-weight: 600; }
 
-/* MENÚ */
+/* MENÃš */
 .menu-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
 .menu-day-col { display: flex; flex-direction: column; gap: 4px; }
 .menu-day-name { font-size: 12px; font-weight: 700; color: #3B82F6; text-align: center; padding: 5px 2px; background: white; border-radius: 10px; border: 1px solid #DBEAFE; }
